@@ -1,5 +1,6 @@
 <script setup>
 import TheNavbar from '@/components/TheNavbar.vue';
+import TheFooter from '@/components/TheFooter.vue';
 </script>
 <template>
   <TheNavbar />
@@ -22,6 +23,7 @@ import TheNavbar from '@/components/TheNavbar.vue';
       </div>
     </div>
   </div>
+  <TheFooter />
 </template>
 
 <style scoped></style>

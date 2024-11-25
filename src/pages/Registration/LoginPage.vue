@@ -8,7 +8,7 @@ const { email, password, login } = useAuth();
   <div>
     <div class="flex items-center justify-center min-h-screen bg-gray-500">
       <form @submit.prevent="login" class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-        <img src="@/assets/images/logo.jpg" class="img-fluid rounded h-12 mx-auto" alt="AI AA NGO" />
+        <img src="@/assets/images/logo.jpg" class="img-fluid rounded h-12 mx-auto" alt="AfroartSafari" />
         <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">AfroartSafari.com</h2>
 
         <div class="mb-4">
