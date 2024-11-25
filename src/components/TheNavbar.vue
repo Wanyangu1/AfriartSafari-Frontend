@@ -104,7 +104,6 @@ const isBottomMenuOpen = ref(false);
         </router-link>
       </div>
 
-      <!-- Bottom menu on small screens - Card style -->
       <div class="md:hidden">
         <button class="text-white text-xl " @click="isBottomMenuOpen = !isBottomMenuOpen">
           <i class="fas fa-bars"></i>

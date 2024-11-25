@@ -46,6 +46,14 @@
           <li>
             <router-link to="/sustainability" class="hover:text-gray-300">Sustainability</router-link>
           </li>
+          <li class="flex items-center space-x-2">
+            <router-link to="https://www.oanda.com/currency-converter/en/?from=USD&to=EUR&amount=1"
+              class="text-white font-semibold hover:text-gray-300">
+              USD
+            </router-link>
+            <img class="rounded-full h-8 w-8" src="@/assets/images/usa.png" alt="USA Flag">
+          </li>
+
         </ul>
       </div>
 
