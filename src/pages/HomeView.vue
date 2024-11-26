@@ -64,7 +64,7 @@ onMounted(() => {
       <input type="text" placeholder="Search for stays, destinations..."
         class="w-full border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" />
       <button
-        class="bg-transparent border-2 border-indigo-600 text-indigo-600 py-2 px-6 rounded-lg flex items-center space-x-2 hover:bg-indigo-600 hover:text-white transition">
+        class="bg-transparent border-2 border-black text-indigo-600 py-2 px-6 rounded-lg flex items-center space-x-2 hover:bg-indigo-600 hover:text-white transition">
         <i class="fas fa-search"></i>
         <span>Search</span>
       </button>

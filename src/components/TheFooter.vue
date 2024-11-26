@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-blue-900 text-white py-8">
+  <footer class="text-white py-8" style="background-color: rgb(181, 101, 30);">
     <div class="mb-12 max-w-screen-lg mx-auto px-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 lg:gap-10">
 
       <!-- Social Media Section -->
@@ -96,15 +96,15 @@
         <ul class="space-y-1">
           <li class="flex items-center space-x-2">
             <i class="fas fa-phone-alt"></i>
-            <span>+1 234 567 890</span>
+            <span>0978494971/0951303576</span>
           </li>
           <li class="flex items-center space-x-2">
             <i class="fas fa-envelope"></i>
-            <span>support@afriartsafari.com</span>
+            <span>marvinphirimv@gmail.com</span>
           </li>
           <li class="flex items-center space-x-2">
             <i class="fas fa-map-marker-alt"></i>
-            <span>123 Safari Road, Lusaka, Zambia</span>
+            <span>Lusaka City, Zambia</span>
           </li>
         </ul>
       </div>
