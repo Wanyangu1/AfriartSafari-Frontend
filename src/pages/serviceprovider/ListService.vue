@@ -4,36 +4,41 @@ import TheNavbar from '@/components/TheNavbar.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import axiosInstance from '@/axiosconfig/axiosInstance';
 
-const hotels = ref([]); // Reactive hotels array
+// Hotels data and wishlist
+const hotels = ref([]);
+const wishlist = ref([]);
+const trendingDestinations = ref([]);
 
-// Fetch hotels and their associated images
+// Toggle wishlist
+const toggleWishlist = (hotelId) => {
+  if (wishlist.value.includes(hotelId)) {
+    wishlist.value = wishlist.value.filter((id) => id !== hotelId);
+  } else {
+    wishlist.value.push(hotelId);
+  }
+};
+
+// Fetch hotels and images
 const fetchHotels = async () => {
   try {
-    // Fetch hotels first
     const hotelResponse = await axiosInstance.get(`/api/hotels/`);
     const hotelsData = hotelResponse.data;
 
-    // Fetch all hotel images once
     const imageResponse = await axiosInstance.get(`/api/hotel-images/`);
     const hotelImagesData = imageResponse.data;
 
-    // For each hotel, fetch associated images based on hotel ID
-    const hotelImagesPromises = hotelsData.map((hotel) => {
-      // Filter images that match the current hotel by ID
-      const relatedImages = hotelImagesData.filter(image => image.hotel === hotel.id);
-
-      // Set the first image as the main image of the hotel
-      if (relatedImages && relatedImages.length > 0) {
-        hotel.image = relatedImages[0].image; // Assuming the image URL is in 'image' field
+    hotels.value = hotelsData.map((hotel) => {
+      const relatedImages = hotelImagesData.filter((image) => image.hotel === hotel.id);
+      if (relatedImages.length > 0) {
+        hotel.image = relatedImages[0].image;
       }
       return hotel;
     });
 
-    // Wait for all hotel images to be fetched and then update the hotels array
-    hotels.value = await Promise.all(hotelImagesPromises);
-
+    // Set up trending destinations
+    trendingDestinations.value = hotelImagesData.slice(0, 5); // Take the first 5 images
   } catch (error) {
-    console.error('There was an error fetching the hotels and images:', error);
+    console.error('Error fetching hotels and images:', error);
   }
 };
 
@@ -43,23 +48,31 @@ onMounted(fetchHotels);
 <template>
   <div>
     <TheNavbar />
+
+    <!-- Services Section -->
     <div class="mx-auto p-8">
-      <h1 class="text-3xl font-bold mb-4">Hotel List</h1>
+      <h1 class="text-2xl font-semibold mb-4">All Services Listed</h1>
       <div v-if="hotels.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <div v-for="hotel in hotels" :key="hotel.id" class="bg-white shadow-md rounded-lg p-2">
-          <!-- Display the first hotel image if it exists -->
+        <div v-for="hotel in hotels" :key="hotel.id" class="relative bg-white shadow-md rounded-lg p-2">
+          <!-- Wishlist Icon -->
+          <button class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors text-xl"
+            @click="toggleWishlist(hotel.id)">
+            <i :class="[wishlist.includes(hotel.id) ? 'fas fa-heart' : 'far fa-heart', 'text-red-600']"></i>
+          </button>
+
+          <!-- Hotel Image -->
           <div v-if="hotel.image" class="mb-4">
             <img :src="hotel.image" alt="Hotel Image" class="w-full h-56 object-cover rounded-md" />
           </div>
 
-          <!-- Display hotel name, location, and additional information -->
+          <!-- Hotel Details -->
           <h2 class="text-xl font-semibold">{{ hotel.name }}</h2>
           <p>{{ hotel.location }}</p>
           <p>Price per night: ${{ hotel.price_per_night }}</p>
 
-          <!-- Beautiful Outline Button for View Details with Tailwind -->
+          <!-- View Details Button -->
           <router-link :to="'/services/' + hotel.id"
-            class="mt-4 inline-block px-4 py-2 rounded text-lg font-semibold border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300">
+            class="mt-4 inline-block px-4 py-2 rounded-md text-md border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300">
             View Details
           </router-link>
         </div>
@@ -68,6 +81,37 @@ onMounted(fetchHotels);
         <p>No hotels available at the moment.</p>
       </div>
     </div>
+
+    <!-- Trending Destinations Section -->
+    <div class="mx-auto p-8 bg-gray-100">
+      <h2 class="text-2xl font-semibold mb-6">Trending Destinations</h2>
+      <div class="grid grid-cols-2 gap-4">
+        <!-- First Row -->
+        <div v-for="(destination, index) in trendingDestinations.slice(0, 2)" :key="'first-row-' + index"
+          class="relative">
+          <img :src="destination.image" alt="Trending Image" class="w-full h-60 object-cover rounded-lg" />
+          <div class="absolute top-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded">
+            {{ destination.title || 'Trending Destination' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 mt-4">
+        <!-- Second Row -->
+        <div v-for="(destination, index) in trendingDestinations.slice(2, 5)" :key="'second-row-' + index"
+          class="relative">
+          <img :src="destination.image" alt="Trending Image" class="w-full h-60 object-cover rounded-lg" />
+          <div class="absolute top-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded">
+            {{ destination.title || 'Trending Destination' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
     <TheFooter />
   </div>
 </template>
+
+<style>
+/* Add custom styles if necessary */
+</style>

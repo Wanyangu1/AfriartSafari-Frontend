@@ -5,6 +5,7 @@ import LoginPage from '@/pages/Registration/LoginPage.vue'
 import ListService from '@/pages/serviceprovider/ListService.vue'
 import CreateService from '@/pages/serviceprovider/CreateService.vue'
 import ServiceDetails from '@/pages/serviceprovider/ServiceDetails.vue'
+import BookingForm from '@/pages/booking/BookingForm.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +31,7 @@ const router = createRouter({
       component: ListService,
     },
     {
-      path: '/create-services',
+      path: '/comingsoon',
       name: 'create-services',
       component: CreateService,
     },
@@ -38,6 +39,12 @@ const router = createRouter({
       path: '/services/:id',
       name: 'service-details',
       component: ServiceDetails,
+      props: true,
+    },
+    {
+      path: '/booking',
+      name: '/booking',
+      component: BookingForm,
       props: true,
     },
   ],

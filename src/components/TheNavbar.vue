@@ -1,13 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axiosInstance from "@/axiosconfig/axiosInstance";
-import useAuth from '@/composables/useAuth';
+import useLogout from "@/composables/useLogout";
 
+const { logout } = useLogout();
 const isTopRightMenuOpen = ref(false);
 const isBottomMenuOpen = ref(false);
 const user = ref(null);
-
-const { logout } = useAuth();
 
 const fetchUserProfile = async () => {
   try {
@@ -113,31 +112,31 @@ onMounted(() => {
     <!-- Bottom menu for large screens -->
     <div class="px-6 py-2">
       <div class="max-w-screen-xl mx-auto flex justify-start space-x-6 hidden md:flex">
-        <router-link to="/stays"
+        <router-link to="/services"
           class="text-white px-4 py-2 border border-white rounded-full flex items-center space-x-2 hover:bg-white hover:text-blue-600 transition duration-300">
           <i class="fas fa-bed"></i>
           <span>Stays</span>
         </router-link>
 
-        <router-link to="/flights"
+        <router-link to="/comingsoon"
           class="text-white px-4 py-2 border border-white rounded-full flex items-center space-x-2 hover:bg-white hover:text-blue-600 transition duration-300">
           <i class="fas fa-plane"></i>
           <span>Flights</span>
         </router-link>
 
-        <router-link to="/car-rentals"
+        <router-link to="/comingsoon"
           class="text-white px-4 py-2 border border-white rounded-full flex items-center space-x-2 hover:bg-white hover:text-blue-600 transition duration-300">
           <i class="fas fa-car"></i>
           <span>Car Rentals</span>
         </router-link>
 
-        <router-link to="/attractions"
+        <router-link to="/comingsoon"
           class="text-white px-4 py-2 border border-white rounded-full flex items-center space-x-2 hover:bg-white hover:text-blue-600 transition duration-300">
           <i class="fas fa-camera-retro"></i>
           <span>Attractions</span>
         </router-link>
 
-        <router-link to="/airport-taxi"
+        <router-link to="/comingsoon"
           class="text-white px-4 py-2 border border-white rounded-full flex items-center space-x-2 hover:bg-white hover:text-blue-600 transition duration-300">
           <i class="fas fa-taxi"></i>
           <span>Airport Taxis</span>
@@ -150,31 +149,31 @@ onMounted(() => {
         </button>
         <div v-if="isBottomMenuOpen"
           class="mt-28 absolute top-0 left-0 w-48 bg-blue-300 p-4 rounded-lg shadow-lg mt-12">
-          <router-link to="/stays"
+          <router-link to="/services"
             class="block text-white py-2 flex items-center space-x-2 hover:bg-blue-600 hover:text-white transition duration-300">
             <i class="fas fa-bed"></i>
             <span>Stays</span>
           </router-link>
 
-          <router-link to="/flights"
+          <router-link to="/comingsoon"
             class="block text-white py-2 flex items-center space-x-2 hover:bg-blue-600 hover:text-white transition duration-300">
             <i class="fas fa-plane"></i>
             <span>Flights</span>
           </router-link>
 
-          <router-link to="/car-rentals"
+          <router-link to="/comingsoon"
             class="block text-white py-2 flex items-center space-x-2 hover:bg-blue-600 hover:text-white transition duration-300">
             <i class="fas fa-car"></i>
             <span>Car Rentals</span>
           </router-link>
 
-          <router-link to="/attractions"
+          <router-link to="/comingsoon"
             class="block text-white py-2 flex items-center space-x-2 hover:bg-blue-600 hover:text-white transition duration-300">
             <i class="fas fa-camera-retro"></i>
             <span>Attractions</span>
           </router-link>
 
-          <router-link to="/airport-taxi"
+          <router-link to="/comingsoon"
             class="block text-white py-2 flex items-center space-x-2 hover:bg-blue-600 hover:text-white transition duration-300">
             <i class="fas fa-taxi"></i>
             <span>Airport Taxis</span>
