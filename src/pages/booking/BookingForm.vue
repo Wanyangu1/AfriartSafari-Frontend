@@ -119,6 +119,11 @@ const submitBooking = async () => {
             class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors mt-6">
             <i class="fas fa-check-circle mr-2"></i> Book Now
           </button>
+          <router-link to="/checkout"
+            class="mt-4 inline-block px-4 py-2 rounded-md text-md border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300">
+            Checkout
+          </router-link>
+
         </form>
       </div>
     </div>
