@@ -66,8 +66,8 @@ onMounted(() => {
         <i class="fas fa-bars"></i>
       </button>
 
-      <div v-if="isTopRightMenuOpen"
-        class="absolute mt-12 top-0 right-1 w-48 bg-blue-300 p-4 rounded-lg shadow-lg md:hidden">
+      <div v-if="isTopRightMenuOpen" class="absolute mt-12 top-0 right-1 w-48 p-4 rounded-lg shadow-lg md:hidden"
+        style="background-color: rgb(181, 101, 30);">
         <router-link to="https://www.oanda.com/currency-converter/en/?from=USD&to=EUR&amount=1"
           class="block text-white py-2 flex items-center space-x-2 hover:bg-blue-600 hover:text-white transition duration-300">
           <i class="fas fa-dollar-sign"></i>
@@ -147,8 +147,8 @@ onMounted(() => {
         <button class="text-white text-xl " @click="isBottomMenuOpen = !isBottomMenuOpen">
           <i class="fas fa-bars"></i>
         </button>
-        <div v-if="isBottomMenuOpen"
-          class="mt-28 absolute top-0 left-0 w-48 bg-blue-300 p-4 rounded-lg shadow-lg mt-12">
+        <div v-if="isBottomMenuOpen" class="mt-28 absolute top-0 left-0 w-48  p-4 rounded-lg shadow-lg mt-12"
+          style="background-color: rgb(181, 101, 30);">
           <router-link to="/services"
             class="block text-white py-2 flex items-center space-x-2 hover:bg-blue-600 hover:text-white transition duration-300">
             <i class="fas fa-bed"></i>

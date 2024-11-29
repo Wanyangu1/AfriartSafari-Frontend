@@ -45,11 +45,11 @@ onMounted(() => {
       </p>
       <div class="space-y-4">
         <div class="flex space-x-4">
-          <router-link to="/stays"
+          <router-link to="/services"
             class="border border-gray-100 text-white font-normal py-3 px-6 rounded-lg transition hover:bg-blue-600 hover:text-white">
             Explore Stays
           </router-link>
-          <router-link to="/flights"
+          <router-link to="/"
             class="border border-gray-100 text-white font-normal py-3 px-6 rounded-lg transition hover:bg-indigo-600 hover:text-white">
             Book Flights
           </router-link>
@@ -86,7 +86,7 @@ onMounted(() => {
           </svg>
         </button>
 
-        <div ref="scrollContainer" class="flex overflow-x-hidden space-x-6 py-4 px-1 snap-x scroll-smooth w-full">
+        <div ref="scrollContainer" class="flex overflow-x-auto space-x-6 py-4 px-1 snap-x scroll-smooth w-full">
           <!-- Property Cards -->
           <div class="relative rounded-lg overflow-hidden shadow-lg snap-center w-72 h-72 flex-shrink-0">
             <img src="@/assets/images/staycation/urban.jpg" alt="Urban Resort" class="w-full h-full object-cover" />
@@ -156,6 +156,7 @@ onMounted(() => {
       </div>
     </div>
   </section>
+
 
   <!-- Browse by Category Type Section -->
   <section class="py-16 bg-gray-200">

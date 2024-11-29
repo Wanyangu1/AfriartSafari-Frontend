@@ -8,6 +8,7 @@ import ServiceDetails from '@/pages/serviceprovider/ServiceDetails.vue'
 import BookingForm from '@/pages/booking/BookingForm.vue'
 import CheckoutPage from '@/pages/booking/payment/CheckoutPage.vue'
 import PaymentResult from '@/pages/booking/payment/PaymentResult.vue'
+import BookingInvoice from '@/pages/booking/BookingInvoice.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,7 +60,15 @@ const router = createRouter({
       name: 'payment-result',
       component: PaymentResult,
     },
+    {
+      path: '/booking-invoice',
+      name: 'booking-invoice',
+      component: BookingInvoice,
+    },
   ],
+  scrollBehavior() {
+    return { top: 0 }
+  },
 })
 
 export default router
